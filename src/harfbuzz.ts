@@ -81,7 +81,7 @@ class HarfBuzzExports {
     this.hbjs_glyph_svg = exports.hbjs_glyph_svg
     
   }
-  hb_tag(s) {
+  hb_tag(s:string) {
     return (
       (s.charCodeAt(0) & 0xFF) << 24 |
       (s.charCodeAt(1) & 0xFF) << 16 |
@@ -204,7 +204,7 @@ export class HarfBuzzFont {
     var vars = hb.malloc(8 * entries.length);
     entries.forEach(function (entry, i) {
       hb.heapu32[vars / 4 + i * 2 + 0] = hb.hb_tag(entry[0]);
-      hb.heapf32[vars / 4 + i * 2 + 1] = entry[1];
+      hb.heapf32[vars / 4 + i * 2 + 1] = entry[1] as number;
     });
     hb.hb_font_set_variations(this.ptr, vars, entries.length);
     hb.free(vars);
@@ -307,7 +307,8 @@ export function getWidth(text: string, font: HarfBuzzFont, fontSizeInPixel: numb
   let shapeResult = shape(text, font, features);
   let totalWidth = shapeResult.map((glyphInformation) => {
     return glyphInformation.XAdvance;
-  }).reduce((previous, current, i, arr) => {
+  }).reduce((previous, current) => {
+    // , i, arr
     return previous + current;
   }, 0.0);
 

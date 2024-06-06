@@ -1,4 +1,5 @@
 import * as hb from './harfbuzz.ts';
+// @ts-ignore
 import wasmUrl from './hb.wasm?url';
 
 export default class FontsManager {
