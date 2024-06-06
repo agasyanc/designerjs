@@ -8,7 +8,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/designer.ts'),
       name: 'designerjs',
       // the proper extensions will be added
-      fileName: 'designer',
+      fileName: 'designerjs',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
