@@ -1,8 +1,16 @@
 {
   "name": "designerjs",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/designerjs.umd.cjs",
+  "module": "./dist/designerjs.js",
+  "exports": {
+    ".": {
+      "import": "./dist/designerjs.js",
+      "require": "./dist/designerjs.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
